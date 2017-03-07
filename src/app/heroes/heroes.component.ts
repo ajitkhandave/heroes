@@ -3,7 +3,7 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { HEROES } from '../mock.heroes';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +16,11 @@ export class HeroesComponent implements OnInit{
   title = 'Tour of Heroes';
   heroes = HEROES;
   selectedHero: Hero;
-   constructor(private heroService: HeroService) { }
+
+   constructor(
+   private router: Router,
+   private heroService: HeroService) { }
+
     getHeroes(): void {
       this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     }
@@ -26,6 +30,9 @@ export class HeroesComponent implements OnInit{
     onSelect(hero: Hero): void {
       this.selectedHero = hero;
     }
+    gotoDetail(): void {
+        this.router.navigate(['/detail', this.selectedHero.id]);
+      }
 }
 
 

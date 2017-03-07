@@ -9,7 +9,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { AppRoutingModule }     from './app-routing/app-routing.module';
 
 RouterModule.forRoot([
   {
@@ -23,31 +23,13 @@ RouterModule.forRoot([
       BrowserModule,
       FormsModule,
        HttpModule,
-      RouterModule.forRoot([
-        {
-               path: '',
-               redirectTo: '/dashboard',
-               pathMatch: 'full'
-             },
-             {
-               path: 'dashboard',
-               component: DashboardComponent
-             },
-             {
-               path: 'detail/:id',
-               component: HeroDetailComponent
-             },
-             {
-               path: 'heroes',
-               component: HeroesComponent
-             }
-      ])
+      AppRoutingModule
     ],
   declarations: [
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent,
+    DashboardComponent
 
 
   ],
